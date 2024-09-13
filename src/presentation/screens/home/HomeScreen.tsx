@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { FullScreemLoader } from '../../components/loader/FullScreemLoader';
 import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
 import { PosterCarousel } from '../../components/movies/PosterCarousel';
 import { useMovies } from '../../hooks/useMovies';
@@ -13,7 +14,7 @@ export const HomeScreen = () => {
   const {isLoading, nowPlaying, popular, topRated, upcoming, popularNextPage} = useMovies();
   
   if( isLoading ){
-    return <Text>Cargando...</Text>
+    return <FullScreemLoader/>
 
   }
 
