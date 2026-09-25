@@ -1,0 +1,19 @@
+diff --git a/src/Assets.js b/src/Assets.js
+index b34df882c0205ec80afa4e916daee6baa60e05db..294ba719c01b007c957c18a9a6a0e0c74ac4bb40 100644
+--- a/src/Assets.js
++++ b/src/Assets.js
+@@ -14,7 +14,13 @@ var AssetPaths = _interopRequireWildcard(
+ );
+ var _crypto = _interopRequireDefault(require("crypto"));
+ var _fs = _interopRequireDefault(require("fs"));
+-var _imageSize = _interopRequireDefault(require("image-size"));
++var _imageSize = {
++  // image-size v2 only accepts buffers; keep v1 behaviour for file paths.
++  default: (input) =>
++    require("image-size").imageSize(
++      typeof input === "string" ? _fs.default.readFileSync(input) : input,
++    ),
++};
+ var _path = _interopRequireDefault(require("path"));
+ function _interopRequireDefault(e) {
+   return e && e.__esModule ? e : { default: e };
