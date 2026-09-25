@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# concurrent-ruby >= 1.3.5 no longer loads Logger, which activesupport < 7.1 needs.
+require 'logger'
+
 # You may use http://rbenv.org/ or https://rvm.io/ to install and use this version
 ruby ">= 2.6.10"
 

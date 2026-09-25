@@ -1,0 +1,124 @@
+diff --git a/index.js b/index.js
+index 501f80d347a4397d473dcee1d0567b6e1f694ec7..62181dccb8f7ee9e5c73679ac1eadcd4eeeeeb3c 100644
+--- a/index.js
++++ b/index.js
+@@ -157,7 +157,10 @@ function customDecodeURIComponent(input) {
+ 	return input;
+ }
+ 
+-export default function decodeUriComponent(encodedURI) {
++module.exports = decodeUriComponent;
++module.exports.default = decodeUriComponent;
++
++function decodeUriComponent(encodedURI) {
+ 	if (typeof encodedURI !== 'string') {
+ 		throw new TypeError(`Expected \`encodedURI\` to be of type \`string\`, got \`${typeof encodedURI}\``);
+ 	}
+diff --git a/package.json b/package.json
+index 8d01f060a3a2da1ee19861badf97d0b5db7192f6..bab40aa36792cdfafb351c0840af37cb74a1b1a3 100644
+--- a/package.json
++++ b/package.json
+@@ -1,53 +1,52 @@
+ {
+-	"name": "decode-uri-component",
+-	"version": "0.5.0",
+-	"description": "A better decodeURIComponent",
+-	"license": "MIT",
+-	"repository": "SamVerschueren/decode-uri-component",
+-	"sideEffects": false,
+-	"author": {
+-		"name": "Sam Verschueren",
+-		"email": "sam.verschueren@gmail.com",
+-		"url": "github.com/SamVerschueren"
+-	},
+-	"type": "module",
+-	"exports": {
+-		"types": "./index.d.ts",
+-		"default": "./index.js"
+-	},
+-	"engines": {
+-		"node": ">=14.16"
+-	},
+-	"scripts": {
+-		"test": "xo && nyc ava && tsd",
+-		"coveralls": "nyc report --reporter=text-lcov | coveralls"
+-	},
+-	"files": [
+-		"index.js",
+-		"index.d.ts"
+-	],
+-	"keywords": [
+-		"decode",
+-		"uri",
+-		"component",
+-		"decodeuricomponent",
+-		"components",
+-		"decoder",
+-		"url"
+-	],
+-	"devDependencies": {
+-		"ava": "^5.1.0",
+-		"coveralls": "^3.1.1",
+-		"nyc": "^15.1.0",
+-		"tsd": "^0.25.0",
+-		"xo": "^0.53.1"
+-	},
+-	"overrides": {
+-		"eslint": "8.39.0"
+-	},
+-	"tsd": {
+-		"compilerOptions": {
+-			"module": "node16"
+-		}
+-	}
++  "name": "decode-uri-component",
++  "version": "0.5.0",
++  "description": "A better decodeURIComponent",
++  "license": "MIT",
++  "repository": "SamVerschueren/decode-uri-component",
++  "sideEffects": false,
++  "author": {
++    "name": "Sam Verschueren",
++    "email": "sam.verschueren@gmail.com",
++    "url": "github.com/SamVerschueren"
++  },
++  "exports": {
++    "types": "./index.d.ts",
++    "default": "./index.js"
++  },
++  "engines": {
++    "node": ">=14.16"
++  },
++  "scripts": {
++    "test": "xo && nyc ava && tsd",
++    "coveralls": "nyc report --reporter=text-lcov | coveralls"
++  },
++  "files": [
++    "index.js",
++    "index.d.ts"
++  ],
++  "keywords": [
++    "decode",
++    "uri",
++    "component",
++    "decodeuricomponent",
++    "components",
++    "decoder",
++    "url"
++  ],
++  "devDependencies": {
++    "ava": "^5.1.0",
++    "coveralls": "^3.1.1",
++    "nyc": "^15.1.0",
++    "tsd": "^0.25.0",
++    "xo": "^0.53.1"
++  },
++  "overrides": {
++    "eslint": "8.39.0"
++  },
++  "tsd": {
++    "compilerOptions": {
++      "module": "node16"
++    }
++  }
+ }
